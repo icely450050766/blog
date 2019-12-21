@@ -1,0 +1,22 @@
+{
+  "name": "blog",
+  "version": "1.0.0",
+  "description": "",
+  "main": "bin/www.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "cross-env NODE_ENV=dev nodemon ./bin/www.js",
+    "prod": "cross-env NODE_ENV=production nodemon ./bin/www.js"
+  },
+  "author": "icely",
+  "license": "ISC",
+  "devDependencies": {
+    "cross-env": "^5.2.1"
+  },
+  "dependencies": {
+    "crypto": "^1.0.1",
+    "mysql": "^2.17.1",
+    "redis": "^2.8.0",
+    "xss": "^1.0.6"
+  }
+}
