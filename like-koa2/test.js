@@ -1,10 +1,12 @@
-const Koa = require('koa')
+// const Koa = require('koa')
+const Koa = require('./index')
 const app = new Koa()
 
 app.use(async (ctx, next)=>{
     console.log('第一层洋葱，开始')
     await next()
-    const rt = ctx.response.get('X-Response-Time')
+    // const rt = ctx.response.get('X-Response-Time')
+    const rt = ctx['X-Response-Time'] // like-koa2没定义get方法
     console.log(`${ctx.method} ${ctx.url} ${rt}`)
     console.log('第一层洋葱，结束')
 })
@@ -14,7 +16,8 @@ app.use(async (ctx, next)=>{
     const start = Date.now()
     await next()
     const ms = Date.now()-start
-    ctx.response.set('X-Response-Time', `${ms}ms`)
+    // ctx.response.set('X-Response-Time', `${ms}ms`)
+    ctx['X-Response-Time'] = `${ms}ms`// like-koa2没定义set方法
     console.log('第二层洋葱，结束')
 })
 
